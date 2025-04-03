@@ -1,18 +1,151 @@
-/* No consistency in CSS classes, inline styles dominate */
+:root {
+  --bg: #fef6e4;
+  --text: #001858;
+  --container: #f3d2c1;
+  --link: #172c66;
+  --button: #f582ae;
+  --radius: 5px;
+  --pad: 16px;
+  --pad-sm: 18px;
+  --font: arial;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #222;
+    --text: #f5f5f5;
+    --container: #333;
+    --link: #ADD8E6;
+    --button: #ADD8E6;
+  }
+}
+
 body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  margin: 0;
+  padding: 0;
 }
 
 header {
   text-align: center;
-  padding: 10px;
-  background-color: #e0e0e0;
+  padding: var(--pad-sm);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--pad-sm);
+  padding: var(--pad);
+}
+
+#hero a {
+  display: block;
+  margin-top: var(--pad-sm);
+  padding: 4px;
+  background: var(--button);
+  color: var(--text);
+  border-radius: var(--radius);
+}
+
+#hero a:hover {
+  background: #ADD8E6;
+}
+
+#recommended-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--pad-sm);
+  padding: var(--pad);
+  text-align: center;
+  justify-items: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+#recommended-products h1 {
+  grid-column: 1 / -1;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 .product {
-  border: 1px solid black;
-  margin: 10px;
-  padding: 10px;
-  width: 300px; /* Not responsive */
+  padding: var(--pad-sm);
+  background: var(--container);
+  border-radius: var(--radius);
+  margin: auto;
+}
+
+.product img {
+  width: 100%;
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.product h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+product p {
+    font-size: 0.9rem;
+}
+
+#faq {
+  background: var(--bg);
+  padding: var(--pad);
+  text-align: center;
+}
+
+#faq h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#faq h3 {
+  font-weight: bold;
+}
+
+#faq a {
+  color: var(--link);
+}
+
+#dark-mode-toggle {
+  display: block;
+  margin: var(--pad-sm) auto;
+  padding: 4px var(--pad-sm);
+  background: var(--button);
+  color: var(--text);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+#dark-mode-toggle:hover {
+  background: #ADD8E6;
+}
+
+@media (max-width: 600px) {
+  #hero {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #recommended-products {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dark-mode {
+  --bg: #222;
+  --text: #f5f5f5;
+  --container: #333;
+  --link: #ADD8E6;
+  --button: #ADD8E6;
 }
